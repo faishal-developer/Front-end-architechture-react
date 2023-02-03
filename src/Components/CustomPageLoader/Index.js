@@ -1,5 +1,5 @@
 import React from 'react';
-import Style from './CustomPageLoader.scss';
+import Style from './CustomPageLoader.module.scss';
 
 export default function CustomPageLoader(props) {
 
@@ -8,6 +8,6 @@ export default function CustomPageLoader(props) {
             <div className={`${Style.overlayed}`} />
             <div className={`rotate dotted ${Style.loader} ${props.className}`} />
             {/*<img src={ctSmallLogo} alt="" className={`${Style.loadinglogoct} ${props.className}`}/>*/}
-        </> : props.default ? <div className={`${Style.defaultDesign}`}><span className="rotate dotted" /></div> : ""
+        </> : props.default ? <div className={`${Style.defaultDesign}`}><span className={`${Style.rotate} ${Style.dotted}`} /></div> : ""
     );
 }

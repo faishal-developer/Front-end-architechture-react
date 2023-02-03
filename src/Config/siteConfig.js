@@ -9,7 +9,7 @@ const siteConfig = {
     company_favicon: favicon,
     company_slogan: 'Customize your life by your choice',
     user_default_profile_pic: user_default_profile_pic,
-    lazy_suspense_delay: 300
+    lazy_suspense_delay: 3000
 }
 
 export default siteConfig;

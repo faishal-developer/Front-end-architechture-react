@@ -5,14 +5,17 @@ import App from './App';
 import {BrowserRouter} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import MainRoutes from './routes/Index';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
+
+localStorage.setItem("userData",true);
+localStorage.setItem("isDeveloper",false);
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter>
       <MainRoutes/>
     </BrowserRouter>
-    <App />
   </React.StrictMode>
 );
 
