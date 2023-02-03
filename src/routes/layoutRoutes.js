@@ -1,8 +1,6 @@
 import React from 'react';
-import path from "./path";
-import TheDefaultLayout from "../layouts/TheDefaultLayout";
-import TheAuthLayout from "../layouts/TheAuthLayout"
-import siteConfig from "../config/site-config";
+import {path} from "./path";
+import siteConfig from "../Config/siteConfig";
 
 let DelayTime = siteConfig.lazy_suspense_delay;
 let SiteName = `| ${siteConfig.company_name}`;

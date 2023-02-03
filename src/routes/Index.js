@@ -2,11 +2,11 @@ import React, { Suspense, useEffect } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 import { RouteRestriction } from "./route-restriction";
 import { private_routes, public_routes, public_private_routes } from './layoutRoutes';
-import pages_path from "./path";
+import {path as pages_path} from "./path";
 import { isDeveloper, userData } from "../Config/sessionKeys";
 import Error400 from "../pages/Error400";
 import siteConfig from "../Config/siteConfig";
-import config from "../Config/baseConfig";
+import {config} from "../Config/baseConfig";
 import Maintenance from "../pages/Maintanance";
 import CustomPageLoader from "../Components/CustomPageLoader/Index";
 
