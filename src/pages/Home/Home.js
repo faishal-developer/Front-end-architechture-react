@@ -1,10 +1,12 @@
 import React from 'react';
+import {Link} from 'react-router-dom';
+import { pagetitle } from '../../helper/CommonFunction';
+const Home = (props) => {
+    pagetitle(props.pageTitle);
 
-const Home = () => {
-    console.log("I am from home")
     return (
         <div>
-            this is home
+            <Link to="/about">this is home</Link>
         </div>
     );
 };

@@ -6,9 +6,14 @@ import CommonLayout from '../Layouts/CommonLayout';
 let DelayTime = siteConfig.lazy_suspense_delay;
 let SiteName = `| ${siteConfig.company_name}`;
 
-console.log("delatime",DelayTime);
 const Home = React.lazy(() => {
-    return Promise.all([import(/*webpackChunkName: "Login" */ "../pages/Home/Home"), new Promise(resolve => setTimeout(resolve, DelayTime))]).then(([moduleExports]) => moduleExports);
+    return Promise.all([import(/*webpackChunkName: "Home" */ "../pages/Home/Home"), new Promise(resolve => setTimeout(resolve, DelayTime))]).then(([moduleExports]) => moduleExports);
+});
+const AboutUs = React.lazy(() => {
+    return Promise.all([import(/*webpackChunkName: "AboutUs" */ "../pages/AboutUs/AboutUs"), new Promise(resolve => setTimeout(resolve, DelayTime))]).then(([moduleExports]) => moduleExports);
+});
+const ContactUs = React.lazy(() => {
+    return Promise.all([import(/*webpackChunkName: "AboutUs" */ "../pages/ContactUs/ContactUs"), new Promise(resolve => setTimeout(resolve, DelayTime))]).then(([moduleExports]) => moduleExports);
 });
 
 
@@ -16,6 +21,8 @@ const Home = React.lazy(() => {
 
 export const private_routes = [
     { path: `${process.env.PUBLIC_URL}${path.home}`, Component: <Home pageTitle={`Default ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${process.env.PUBLIC_URL}${path.aboutUs}`, Component: <AboutUs pageTitle={`Default ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${process.env.PUBLIC_URL}${path.contactUs}`, Component: <ContactUs pageTitle={`Contact ${SiteName}`} />, Layout: <CommonLayout /> },
 ]
 
 export const public_routes = [
