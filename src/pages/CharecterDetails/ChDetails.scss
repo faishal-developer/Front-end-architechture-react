@@ -1,0 +1,162 @@
+@import '../../scss//variable.scss';
+@import '../../scss//global.scss';
+
+.details_cont{
+    background-image: url("../../assets/Rick&Morties/bg-3.png");
+    background-size: cover;
+
+    .logo{
+        padding-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+    .leftRight_cont{
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: space-around;
+        .left_part {
+            // display: flex;
+            margin-left: 80px;
+            .trans-name {
+                font-size: 60px;
+                font-weight: bold;
+                // color: #1E222E;
+                opacity: 0.5;
+                word-break: keep-all;
+                text-shadow:
+                        -1px -1px 0 $text-shadow-color,
+                        1px -1px 0 $text-shadow-color,
+                        -1px 1px 0 $text-shadow-color,
+                        1px 1px 0 $text-shadow-color;
+                rotate: -90deg;
+                position:absolute;
+                left:-170px;
+                top:200px;
+            }
+            .name{
+                color:$light-blue;
+                margin-bottom: 20px;
+                font-size: 30px;
+            }
+            .ch_image{
+                @include transparentCard();
+                max-width: 200px;
+            }
+        }
+
+        .divider{
+            width:1px;
+            height: 150px;
+            background-color: $light-green;
+            border-radius: 2px;
+            margin: 0 30px;
+        }
+
+        .right_part{
+            .three_box{
+                display: flex;
+                justify-content: space-between;
+                color:$white;
+                .box {
+                    @include transparentCard();
+                    border-radius: 5px;
+                    width:100%;
+                    // min-width: 155px;
+                    margin-right: 10px;
+                    img{
+                        max-width: 25px;
+                    }
+                    p{
+                        margin-bottom: 0px;
+                        font-weight: 200;
+                    }
+                    h6{
+                        margin-bottom: 0;
+                        font-size: 23px;
+                    }
+                }
+                .box:last-child{
+                    margin-right: 0;
+                }
+                
+            }
+            .middle_box{
+                color: $white;
+                margin:15px 0;
+                @include transparentCard();
+                img{
+                    max-width: 25px;
+                }
+                p{
+                    margin: 0;
+                    font-weight: 200;
+                }
+                .botton_div{
+                    display: flex;
+                    justify-content: space-between;
+
+                    h6{
+                        font-size: 23px;
+                    }
+                    
+                }
+            }
+            .episode_cont{
+                @include transparentCard();
+                .episode {
+                        color: $white;
+                        max-height: 200px;
+                        margin-right: 5px;
+                        overflow-y: scroll;
+                
+                        li {
+                            font-weight: bold;
+                        }
+                
+                        img {
+                            max-width: 26px;
+                        }
+                
+                        p {
+                            margin: 0;
+                            font-weight: 200;
+                        }
+                    }
+                
+                    .episode::-webkit-scrollbar {
+                        width: 6px;
+                        background: $scroll-bar-bg;
+                        border-radius: 10px;
+                    }
+                    .episode::-webkit-scrollbar-thumb{
+                        border: 3px solid $light-blue;
+                        border-radius: 10px;
+                    }
+            }
+            
+            
+        }
+    }
+
+    
+}
+
+
+@media (max-width: 900px){
+    .leftRight_cont{
+        flex-direction: column;
+        justify-content: center;
+
+        .left_part {
+            margin-left: 0px !important;
+    
+            .trans-name {
+                display: none;
+            }
+        }
+        .divider{
+            display: none;
+        }
+    }
+}

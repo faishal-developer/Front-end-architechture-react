@@ -7,7 +7,8 @@ import {BrowserRouter} from 'react-router-dom'
 import reportWebVitals from './reportWebVitals';
 import MainRoutes from './routes/Index';
 import 'bootstrap/dist/css/bootstrap.min.css';
-
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 
 localStorage.setItem("userData",true);
@@ -16,6 +17,7 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <BrowserRouter basename='/'>
+      <ToastContainer/>
       <MainRoutes/>
     </BrowserRouter>
   </React.StrictMode>

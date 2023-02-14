@@ -2,6 +2,8 @@ import React from 'react';
 import {path} from "./path";
 import siteConfig from "../Config/siteConfig";
 import CommonLayout from '../Layouts/CommonLayout';
+import Charecters from '../pages/Charecters/Charecters.View';
+import ChDetails from '../pages/CharecterDetails/ChDetails.View';
 
 let DelayTime = siteConfig.lazy_suspense_delay;
 let SiteName = `| ${siteConfig.company_name}`;
@@ -32,5 +34,7 @@ export const public_routes = [
 // ************ Example for public private route *********** //
 export const public_private_routes = [
     { path: `${process.env.PUBLIC_URL}${path.home}`, Component: <Home pageTitle={`Home ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${process.env.PUBLIC_URL}${path.ch_list}`, Component: <Charecters pageTitle={`Charecters ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${process.env.PUBLIC_URL}${path.ch_details}`, Component: <ChDetails pageTitle={`Details ${SiteName}`} />, Layout: <CommonLayout /> },
     // {path: `${process.env.PUBLIC_URL}${path.registration}`, Component: <Signup pageTitle={`Sign Up ${SiteName}`}/>, Layout: <TheAuthLayout/> },
 ]

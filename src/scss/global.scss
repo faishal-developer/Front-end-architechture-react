@@ -4,6 +4,9 @@
 // .black{
 //     color: $btn_color;
 // }
+.c_pointer{
+    cursor: pointer;
+}
 .i{
     font-style: italic;
 }
@@ -69,6 +72,20 @@
 .m_w_220{
     width: 200px;
 }
+.d-flex{
+    display: flex;
+}
+.f_s_18{
+    font-size: 18px;
+}
+.react-multiple-carousel__arrow{
+    background-color: $white !important;
+
+}
+.react-multiple-carousel__arrow::before{
+    color:$light-blue !important;
+    font-weight: bold;
+}
 
 
 //function to use multiple times
@@ -79,5 +96,29 @@
     -webkit-text-fill-color: transparent;
     -moz-background-clip: text;
     -moz-text-fill-color: transparent;
+}
+
+@mixin transparentCard(){
+    background-color: $water-color;
+    padding:10px;
+    opacity: 0.9;
+    border-image: linear-gradient(to right, $light-green, $light-blue);
+    border-width: 1px;
+    box-shadow: 1px 1px 1px;
+    border-style: solid;
+    border-image-slice: 1;
+    border-radius: 5px;
+}
+
+@mixin afterclass($col1,$col2){
+    position: absolute;
+    top: -4px; 
+    bottom: -4px;
+    left: -4px; 
+    right: -4px;
+    background: linear-gradient($col1, $col2);
+    content: '';
+    z-index: -1;
+    border-radius: 16px;
 }
 

@@ -1,0 +1,17 @@
+@import '../../scss/variable.scss';
+
+.charecters{
+    background: url("../../assets/Rick&Morties/bg-2.png");
+
+    .figure{
+        padding-top: 15px;
+        display: flex;
+        justify-content: center;
+    }
+    .main{
+        margin-top: 30px;
+        .header{
+            color:$light-blue;
+        }
+    }
+}

@@ -14,6 +14,9 @@
     --light: #ebdddd;
     --white: #fff;
      --banner-h1:60px;
+     --text-shadow-color:#4a3f3f;
+     --water:#ffffff25;
+     --scrollbar_background:#393E4F;
     // --banner-middle:600px;
 }
 
@@ -28,6 +31,9 @@ $white:var(--white);
 $banner-h1:var(--banner-h1);
 $banner-middle:var(--banner-middle);
 $gradient-green:var(--gradient-green);
+$text-shadow-color:var(--text-shadow-color);
+$water-color:var(--water);
+$scroll-bar-bg:var(--scrollbar_background);
 
 
 @media (max-width: 768px) and (min-width: 576px) {

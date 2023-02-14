@@ -2,7 +2,7 @@ import React,{useEffect, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import { pagetitle } from '../../helper/CommonFunction';
 import {useTranslation} from "react-i18next"
-import Logo from '../../assets/Rick&Morties/Rick&MortyLogo.png';
+import siteConfig from '../../Config/siteConfig';
 import css from "../../scss/CommonClass";
 import './Home.scss';
 import headImg from "../../assets/Rick&Morties/Head.png"
@@ -34,7 +34,7 @@ const Home = (props) => {
             <div className={`bg-img-container ${css.container}`}>
                 <div className='home-banner'>
                     <div className={`${css.d_flex} ${css.JC_center} logo`}>
-                        <img src={Logo} alt="Rick and morty Logo" />
+                        <img src={siteConfig.company_logo1} alt="Rick and morty Logo" />
                     </div>
                     <div className='banner-header'>
                         <div className='banner-middle'>
@@ -72,12 +72,12 @@ const Home = (props) => {
                 <div className='card-carousel'>
                     <div className='caro_top_header'>
                         <div className='d-flex card_top_arrow'>
-                            <p className='white '>Meet The Cast</p>
+                            <p className='white f_s_18'>Meet The Cast</p>
                             <FontAwesomeIcon className='icon' icon={faAngleLeft} onClick={() => setNewOrder(data, setData, 0)} />
                             <FontAwesomeIcon className='icon' icon={faAngleRight} onClick={() => setNewOrder(data, setData, data.length - 1)} />
                         </div>
                         <div className='view_btn'>
-                            <button onClick={()=>navigate(path.ch_details)}>View All</button>
+                            <button onClick={()=>navigate(path.ch_list)}>View All</button>
                         </div>
                     </div>
                     
@@ -103,7 +103,7 @@ const Home = (props) => {
                     }
                 </div>
                 <div className={`card-carousel ${css.pt5}`}>
-                    <p className='white'>Episodes</p>
+                    <p className='white f_s_18'>Episodes</p>
                     {
                         episodes.length ? (
                             <CustomCarousel responsive={{ sl: 4, l: 4.5, t: 2.1, m: 1.8}}>
@@ -126,7 +126,7 @@ const Home = (props) => {
                     }
                 </div>
                 <div className={`card-carousel ${css.pt5}`}>
-                    <p className='white'>Locations</p>
+                    <p className='white f_s_18'>Locations</p>
                     {
                         episodes.length ? (
                             <CustomCarousel responsive={{ sl: 4, l: 4.5, t: 2.2, m: 1.8 }}>
