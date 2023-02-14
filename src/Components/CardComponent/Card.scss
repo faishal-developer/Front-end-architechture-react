@@ -5,39 +5,53 @@
     display: inline-block;
 
     .card_data{
-        // width: 200px;
-        // max-width: 150px;
         max-height: 250px;
         position:relative;
         min-height:70px;
-        // overflow: hidden;
-        background-color: #ffffff18;
-        // opacity:0.5;
-        // opacity: 0.1;
-        border-image:linear-gradient(to bottom right,$light-green,$light-blue);
-        border-width: 1px;
-        box-shadow: 1px 1px 1px;
-        border-style: solid;
-        border-image-slice: 1;
+        // background-color: #ffffff18;
+        // border-image:linear-gradient(to bottom right,$light-green,$light-blue);
+        // border-width: 1px;
+        // box-shadow: 1px 1px 1px;
+        // border-style: solid;
+        // border-image-slice: 1;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        background: $bg-transparent;
+        background-clip: padding-box;
+        padding: 10px;
+        /* just to show box-shadow still works fine */
+        // box-shadow: 0 3px 9px black, inset 0 0 9px white
+
+    }
+    .card_data:after{
+        position: absolute;
+            top: -2px;
+            bottom: -2px;
+            left: -2px;
+            right: -2px;
+            background: linear-gradient(to top left,$light-blue, $light-green);
+            content: '';
+            z-index: -1;
+            border-radius: 12px;
     }
     .card_data:after {
-        content: "";
-        position: absolute;
-        right:0;
-        bottom:0;
-        margin: -25px;
-        width: 50px;
-        height: 50px;
-        transform: rotate(45deg);
-        background-color: $bg-color2;
-        border-image: linear-gradient(to left, $light-green, $light-blue);
-        border-width: 0px;    
-        border-left-width: 1px;
-            box-shadow: 1px 1px 1px;
-            border-style: solid;
-            border-image-slice: 1;
-        // box-shadow: 0 0 0 250px #522d5b;
-        /* to see where it is */
+        // content: "";
+        // position: absolute;
+        // right:0;
+        // bottom:0;
+        // margin: -25px;
+        // width: 50px;
+        // height: 50px;
+        // transform: rotate(45deg);
+        // background-color: $bg-color2;
+        // border-image: linear-gradient(to left, $light-green, $light-blue);
+        // border-width: 0px;    
+        // border-left-width: 1px;
+        //     box-shadow: 1px 1px 1px;
+        //     border-style: solid;
+        //     border-image-slice: 1;
+        
+        
     }
         .episode_card{
             // color:$white;
@@ -52,15 +66,15 @@
                     margin: 0px;
                 }
         }
-    // .corner_box{
-    //     background-image:linear-gradient(to left,rgb(30, 33, 47),rgb(30, 33, 47)) ;
-    //     width: 40px;
-    //     height: 90px;
-    //     // background:black;
-    //     rotate: 60deg;
-    //     position: absolute;
-    //     right: -5px;
-    //     bottom: -45px;
-    // }
+    .corner_box{
+        background-image: linear-gradient(to left, rgb(30, 33, 47), rgb(30, 33, 47));
+        width: 43px;
+        height: 45px;
+        rotate: 56deg;
+        position: absolute;
+        right: -15px;
+        bottom: -28px;
+        border-left: 1px solid var(--light-blue);
+    }
 }
 

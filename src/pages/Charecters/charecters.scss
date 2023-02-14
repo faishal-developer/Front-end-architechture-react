@@ -3,6 +3,9 @@
 .charecters{
     background: url("../../assets/Rick&Morties/bg-2.png");
 
+    .card_border{
+        z-index: 0;
+    }
     .figure{
         padding-top: 15px;
         display: flex;

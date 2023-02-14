@@ -86,6 +86,7 @@ const Home = (props) => {
                             <CustomCarousel responsive={{sl:5,l:5.5,t:3,m:2.2}}>
                                 {
                                     data.map((data, i) => (
+                                    <div key={i} onClick={()=>navigate(path.ch_details+`?id=${data.id}`)}>
                                         <Card max_width="m_w_150">
                                             <figure className='p_10 p_b_0'>
                                                 <img className='m_w_100' src={data.image} alt={data.name} />
@@ -94,6 +95,7 @@ const Home = (props) => {
                                                 {data.name}
                                             </p>
                                         </Card>
+                                    </div>
                                     ))
                                 }
                             </CustomCarousel>

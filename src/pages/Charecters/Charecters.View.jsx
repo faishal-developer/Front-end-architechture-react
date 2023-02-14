@@ -25,8 +25,8 @@ const Charecters = () => {
                 <div className={`${css.row} ${css.g3} ${css.row_c2} ${css.row_c_m3} ${css.row_c_l5}`}>
                     {Charecters.length ? (
                         Charecters.map((v,i)=>(
-                            <div className={`c_pointer ${css.col}`} onClick={()=>{navigate(path.ch_details+`?id=${v.id}`)}}>
-                                <Card max_width="m_w_150" key={i}>
+                            <div key={i} className={`card_border c_pointer ${css.col}`} onClick={()=>{navigate(path.ch_details+`?id=${v.id}`)}}>
+                                <Card max_width="m_w_150">
                                     <figure className='p_10 p_b_0'>
                                         <img className='m_w_100' src={v.image} alt={v.name} />
                                     </figure>

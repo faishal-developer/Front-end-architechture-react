@@ -8,6 +8,7 @@
 .light-theme {
     --bg-color: #191E2B;
     --bg-color2: #212334 ;
+    --trans-bg-color:#31384a;
     --light-green: #81F62F;
     --gradient-green:#4BC772;
     --light-blue: #14D9E5;
@@ -24,6 +25,7 @@
 
 $bg-color1:var(--bg-color);
 $bg-color2:var(--bg-color2);
+$bg-transparent:var(--trans-bg-color);
 $light-green:var(--light-green);
 $light-blue:var(--light-blue);
 $light:var(--light);
@@ -34,6 +36,7 @@ $gradient-green:var(--gradient-green);
 $text-shadow-color:var(--text-shadow-color);
 $water-color:var(--water);
 $scroll-bar-bg:var(--scrollbar_background);
+
 
 
 @media (max-width: 768px) and (min-width: 576px) {
