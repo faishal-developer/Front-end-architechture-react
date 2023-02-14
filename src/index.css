@@ -11,3 +11,17 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+/* .dark-theme{
+  --bg-color:#141414;
+  --color:rgb(77, 158, 158);
+}
+.light-theme{
+  --bg-color:rgb(77, 158, 158);
+  --color:#141414;
+}
+
+p{
+  background-color: var(--bg-color);
+  color: var(--color) ;
+} */

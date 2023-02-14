@@ -1,5 +1,6 @@
 export const path ={
     home:"/",
     aboutUs:"/about",
-    contactUs:"/contact"
+    contactUs:"/contact",
+    ch_details:"/charecter_details"
 };

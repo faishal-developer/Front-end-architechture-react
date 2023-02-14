@@ -9,6 +9,7 @@ import MainRoutes from './routes/Index';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 
+
 localStorage.setItem("userData",true);
 localStorage.setItem("isDeveloper",false);
 const root = ReactDOM.createRoot(document.getElementById('root'));

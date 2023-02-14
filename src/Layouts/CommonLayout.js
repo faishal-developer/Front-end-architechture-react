@@ -4,7 +4,7 @@ import { Outlet } from 'react-router-dom';
 const CommonLayout = () => {
     return (
         <div>
-            layout working
+            {/* layout working */}
             <Outlet/>
         </div>
     );

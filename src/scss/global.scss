@@ -1,5 +1,83 @@
 @import './variable.scss';
 
-.black{
-    color: $btn_color;
+
+// .black{
+//     color: $btn_color;
+// }
+.i{
+    font-style: italic;
 }
+.m_w_100{
+    max-width: 100%;
+}
+.p_10{
+    padding:10px;
+}
+
+.light{
+    color:$light;
+}
+.white{
+    color:$white;
+}
+.bg-none{
+    background: none;
+}
+.p_0{
+    padding: 0px;
+}
+.p_b_0{
+    padding-bottom: 0px;
+}
+.m_0{
+    margin: 0;
+}
+.p_l_10{
+    padding-left: 10px;
+}
+.ml_15{
+    margin-left: 15px;
+}
+.f_w_900{
+    font-weight: 900;
+}
+.f_w_700{
+    font-weight: 700;
+}
+
+.mt_10{
+    margin-top: 10px;
+}
+.mr_5{
+    margin-right: 5px;
+}
+.a_i_center{
+    align-items: center;
+}
+.j_c_center{
+    justify-content: center;
+}
+.mr_15{
+    margin-right: 15px;
+}
+.mb_20{
+    margin-bottom:20px;
+}
+.m_w_150 {
+    max-width: 150px;
+}
+.m_w_220{
+    width: 200px;
+}
+
+
+//function to use multiple times
+@mixin text_gradient($color1, $color2) {
+    background-image: linear-gradient(45deg, $color1, $color2);
+    background-size: 100%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -moz-background-clip: text;
+    -moz-text-fill-color: transparent;
+}
+

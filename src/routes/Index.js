@@ -24,6 +24,7 @@ const MainRoutes = () => {
             document.getElementsByTagName('head')[0].appendChild(link);
         }
         link.href = siteConfig.company_favicon;
+        
     }, []);
 
     return maintenance && isDeveloper !== 'true' ? (
@@ -31,6 +32,13 @@ const MainRoutes = () => {
     ) : (
         <>
             <Routes>
+                <Route exact path='/' element={<RouteRestriction type="both" />}>
+                    {public_private_routes.map(({ path, Component, Layout }, i) => (
+                        <Route element={Layout} key={i}>
+                            <Route exact path={path} element={<Suspense fallback={<CustomPageLoader default />}>{Component}</Suspense>} />
+                        </Route>
+                    ))}
+                </Route>
                 <Route exact path='/' element={<RouteRestriction type="private" />}>
                     {private_routes.map(({ path, Component, Layout }, i) => (
                         <Route element={Layout} key={i}>
@@ -54,13 +62,7 @@ const MainRoutes = () => {
                     ))}
                 </Route>
 
-                <Route exact path='/' element={<RouteRestriction type="both" />}>
-                    {public_private_routes.map(({ path, Component, Layout }, i) => (
-                        <Route element={Layout} key={i}>
-                            <Route exact path={path} element={<Suspense fallback={<CustomPageLoader default />}>{Component}</Suspense>} />
-                        </Route>
-                    ))}
-                </Route>
+                
                 <Route path={`${pages_path.error400}`} element={<Error400 pageTitle="Error" />} />
                 <Route path="*" element={<Error400 pageTitle="Error" />} /> {/* wrong route redirects to 404 page */}
             </Routes>

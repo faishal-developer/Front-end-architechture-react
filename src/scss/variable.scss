@@ -1,1 +1,82 @@
-$btn_color:red;
+// .dark-theme {
+//     --bg-color: #191E2B;
+//     --light-green:#81F62F;
+//     --light-blue:#14D9E5;
+//     --white:#FFFFFF;
+// }
+
+.light-theme {
+    --bg-color: #191E2B;
+    --bg-color2: #212334 ;
+    --light-green: #81F62F;
+    --gradient-green:#4BC772;
+    --light-blue: #14D9E5;
+    --light: #ebdddd;
+    --white: #fff;
+     --banner-h1:60px;
+    // --banner-middle:600px;
+}
+
+
+
+$bg-color1:var(--bg-color);
+$bg-color2:var(--bg-color2);
+$light-green:var(--light-green);
+$light-blue:var(--light-blue);
+$light:var(--light);
+$white:var(--white);
+$banner-h1:var(--banner-h1);
+$banner-middle:var(--banner-middle);
+$gradient-green:var(--gradient-green);
+
+
+@media (max-width: 768px) and (min-width: 576px) {
+    .light-theme {
+        --banner-h1: 60px !important;
+        // --banner-middle:450px
+    }
+}
+
+@media (max-width: 576px) and (min-width: 300px) {
+    .light-theme {
+        --banner-h1: 50px !important;
+        // --banner-middle:350px
+    }
+}
+
+
+
+
+
+
+
+
+// $light_colors:(
+//     base:#fff,
+//     bg-color:rgb(77, 158, 158),
+//     color: #141414
+// );
+// $dark_colors:(
+//     base:#fff,
+//     bg-color:#141414,
+//     color: rgb(77, 158, 158)
+// );
+
+// :root{
+//     @each $name, $color in $light_colors{
+//         --color-#{$name} : #{$color};
+//     }
+//     --theme:'light'
+// }
+// @media (prefers-color-scheme:dark){
+//     :root{
+//         @each $name, $color in $dark_colors{
+//             --color-#{$name} : #{$color};
+//         }
+//         --theme:'dark'
+//     }
+// }
+
+// @function getColor($color-name){
+//     @return var(--color-#{$color-name})
+// }

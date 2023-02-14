@@ -1,0 +1,66 @@
+@import '../../scss/variable.scss';
+
+.card_flat{
+    position: relative;
+    display: inline-block;
+
+    .card_data{
+        // width: 200px;
+        // max-width: 150px;
+        max-height: 250px;
+        position:relative;
+        min-height:70px;
+        // overflow: hidden;
+        background-color: #ffffff18;
+        // opacity:0.5;
+        // opacity: 0.1;
+        border-image:linear-gradient(to right,$light-green,$light-blue);
+        border-width: 1px;
+        box-shadow: 1px 1px 1px;
+        border-style: solid;
+        border-image-slice: 1;
+    }
+    .card_data:after {
+        content: "";
+        position: absolute;
+        right:0;
+        bottom:0;
+        margin: -25px;
+        width: 50px;
+        height: 50px;
+        transform: rotate(45deg);
+        background-color: $bg-color2;
+        border-image: linear-gradient(to left, $light-green, $light-blue);
+        border-width: 0px;    
+        border-left-width: 1px;
+            box-shadow: 1px 1px 1px;
+            border-style: solid;
+            border-image-slice: 1;
+        // box-shadow: 0 0 0 250px #522d5b;
+        /* to see where it is */
+    }
+        .episode_card{
+            // color:$white;
+            .epi_sl {
+                    color: $white;
+                    padding: 10px 0 0 10px;
+                    margin: 0px;
+                }
+            
+                .epi_name {
+                    padding: 0 0 10px 10px;
+                    margin: 0px;
+                }
+        }
+    // .corner_box{
+    //     background-image:linear-gradient(to left,rgb(30, 33, 47),rgb(30, 33, 47)) ;
+    //     width: 40px;
+    //     height: 90px;
+    //     // background:black;
+    //     rotate: 60deg;
+    //     position: absolute;
+    //     right: -5px;
+    //     bottom: -45px;
+    // }
+}
+
