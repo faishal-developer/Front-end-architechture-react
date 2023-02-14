@@ -22,8 +22,8 @@ const ContactUs = React.lazy(() => {
 
 
 export const private_routes = [
-    { path: `${process.env.PUBLIC_URL}${path.aboutUs}`, Component: <AboutUs pageTitle={`Default ${SiteName}`} />, Layout: <CommonLayout /> },
-    { path: `${process.env.PUBLIC_URL}${path.contactUs}`, Component: <ContactUs pageTitle={`Contact ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${path.aboutUs}`, Component: <AboutUs pageTitle={`Default ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${path.contactUs}`, Component: <ContactUs pageTitle={`Contact ${SiteName}`} />, Layout: <CommonLayout /> },
 ]
 
 export const public_routes = [
@@ -33,8 +33,8 @@ export const public_routes = [
 
 // ************ Example for public private route *********** //
 export const public_private_routes = [
-    { path: `${process.env.PUBLIC_URL}${path.home}`, Component: <Home pageTitle={`Home ${SiteName}`} />, Layout: <CommonLayout /> },
-    { path: `${process.env.PUBLIC_URL}${path.ch_list}`, Component: <Charecters pageTitle={`Charecters ${SiteName}`} />, Layout: <CommonLayout /> },
-    { path: `${process.env.PUBLIC_URL}${path.ch_details}`, Component: <ChDetails pageTitle={`Details ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${path.home}`, Component: <Home pageTitle={`Home ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${path.ch_list}`, Component: <Charecters pageTitle={`Charecters ${SiteName}`} />, Layout: <CommonLayout /> },
+    { path: `${path.ch_details}`, Component: <ChDetails pageTitle={`Details ${SiteName}`} />, Layout: <CommonLayout /> },
     // {path: `${process.env.PUBLIC_URL}${path.registration}`, Component: <Signup pageTitle={`Sign Up ${SiteName}`}/>, Layout: <TheAuthLayout/> },
 ]
