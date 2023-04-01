@@ -3,7 +3,7 @@ import React from 'react';
 const Error400 = () => {
     return (
         <div>
-            this is error 400
+            that is error 400
         </div>
     );
 };

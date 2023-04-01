@@ -1,42 +1,61 @@
+import { toast } from "react-toastify";
+import { getDELETECall } from "../../ApiServices/ApiServices";
 import { Endpoints } from "../../ApiServices/apiEndPoints";
-import { getCall } from "../../ApiServices/ApiServices";
+import { pagetitle } from "../../helper/CommonFunction";
 
-const useHomeLogic = () => {
-    const initialCall=({setData,setEpisodes,setLocations})=>{
-        getCall(
-            Endpoints.charecter,
-            (newData) => setData(newData.results),
-            (er) => console.log(er)
-        );
-        getCall(
-            Endpoints.episode,
-            (newData) => setEpisodes(newData.results),
-            (er) => console.log(er)
-        );
-        getCall(
-            Endpoints.location,
-            (newData) => setLocations(newData.results),
-            (er) => console.log(er)
-        );
+const useHomeLogics = () => {
+    const handleClose = (setShow) => setShow(false);
+
+    const handleShow = (item,setShow,setEditItem) => {
+        console.log("handleshow")
+        setShow(true);
+        setEditItem(item);
     }
 
-    const setNewOrder = (data, setData, order) => {
-        if(data.length<=2)return;
-        let newData = [];
-        if (order === data.length - 1) newData.push(data[order]);
-        data.forEach((e, i) => {
-            if (i !== order) {
-                newData.push(e);
-            }
-        });
-        if (order === 0) newData.push(data[order]);
-        setData(newData);
+    const handleChage = (e,{editItem,setEditItem}) => {
+        console.log(e.target.name, e.target.value);
+        setEditItem({
+            ...editItem,
+            [e.target.name]: e.target.value
+        })
     }
+
+    const handleSubmit = (e,{editItem,dispatch,UpdateData,setEditItem,setShow,toast}) => {
+        e.preventDefault();
+        dispatch(UpdateData(editItem));
+        setEditItem({});
+        setShow(false);
+        toast.success(editItem.create?"Created Successfully":"Edited Successfully");
+    }
+
+    const Delete = (id,{dispatch,DeleteUser,toast}) => {
+        dispatch(DeleteUser({ id }));
+        toast.success("Deleted Successfully");
+    }
+
+    const getItem=({title,reduxData,setPageLoader,dispatch,setData})=>{
+        pagetitle(title);
+        if (reduxData.length >= 1) {
+            setPageLoader(false);
+            return;
+        }
+        getDELETECall(Endpoints.users, {
+            method: 'GET',
+            thenCB: (data) => { dispatch(setData(data)) },
+            catchCB: (er) => { toast.error('Something went wrong') },
+            finalyCB: () => { setPageLoader(false); }
+        })
+    }
+
 
     return {
-        initialCall,
-        setNewOrder
+        handleClose,
+        handleChage,
+        handleShow,
+        handleSubmit,
+        Delete,
+        getItem
     }
 };
 
-export default useHomeLogic;
+export default useHomeLogics;

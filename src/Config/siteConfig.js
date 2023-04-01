@@ -3,7 +3,7 @@ import favicon from "../assets/Rick&Morties/Head.png";
 import user_default_profile_pic from "../assets/images/user.svg"
 
 const siteConfig = {
-    company_name: 'RICK&MORTY',
+    company_name: 'Web Invento',
     company_logo1: Logo,
     company_logo2: Logo,
     company_favicon: favicon,

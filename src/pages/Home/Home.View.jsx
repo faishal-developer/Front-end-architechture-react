@@ -1,157 +1,113 @@
-import React,{useEffect, useState} from 'react';
-import {Link, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { toast } from 'react-toastify';
+import { Endpoints } from '../../ApiServices/apiEndPoints';
+import { getDELETECall } from '../../ApiServices/ApiServices';
 import { pagetitle } from '../../helper/CommonFunction';
-import {useTranslation} from "react-i18next"
-import siteConfig from '../../Config/siteConfig';
-import css from "../../scss/CommonClass";
-import './Home.scss';
-import headImg from "../../assets/Rick&Morties/Head.png"
-import bubble from "../../assets/Rick&Morties/bubble.png"
-import lightGun from "../../assets/Rick&Morties/LightGun.png"
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faAngleLeft, faAngleRight, faPlay } from '@fortawesome/free-solid-svg-icons';
-import Card from '../../Components/CardComponent/Card';
-import CustomCarousel from '../../Carousel/Carousel';
-import useHomeLogic from './Home.Presenter';
-import { path } from '../../routes/path';
+import { useDispatch, useSelector } from 'react-redux';
+import { DeleteUser, UpdateData, setData } from '../../store/userSlice';
+import CustomPageLoader from '../../Components/CustomPageLoader/Index';
+import "../Home/Home.scss"
+import ModalExample from './Modal.view';
+import { Button } from 'react-bootstrap';
+import useHomeLogics from './Home.presenter';
+
 
 const Home = (props) => {
-    pagetitle(props.pageTitle);
-    const { initialCall,setNewOrder } = useHomeLogic();
-    const navigate = useNavigate()
-    const {t} = useTranslation();
-    const [data,setData] = useState([]);
-    const [episodes,setEpisodes] = useState([]);
-    const [locations,setLocations] = useState([]);
+    const [pageLoader,setPageLoader] = useState(true);
+    const reduxData = useSelector(state => state.userSlice).value;
+    const dispatch = useDispatch();
+    const [show, setShow] = useState(false);
+    const [editItem,setEditItem] = useState({});
+    const { handleClose, handleChage, handleShow, handleSubmit, Delete, getItem } = useHomeLogics();
 
     useEffect(()=>{
-        console.log("working from")
-        initialCall({setData,setEpisodes,setLocations});
+        getItem({ title:props.pageTitle, reduxData, setPageLoader, dispatch, setData });
     },[])
-
+    
     return (
-        <div className={`home-container `}>
-            <div className={`bg-img-container ${css.container}`}>
-                <div className='home-banner'>
-                    <div className={`${css.d_flex} ${css.JC_center} logo`}>
-                        <img src={siteConfig.company_logo1} alt="Rick and morty Logo" />
+        <div className='container Home'>
+            {
+                <CustomPageLoader pageLoader={pageLoader}/>
+            }
+            <h3 className='d-flex justify-content-between'>
+                USERS 
+                <span 
+                    className=' pointer text-success fw-bold'
+                    onClick={()=>{
+                        setEditItem({id:Math.floor(Math.random()*1000)+10,create:true})
+                        setShow(true);
+                    }}
+                >
+                    Create User
+                </span>
+            </h3>
+            {(pageLoader===false && reduxData?.length===0)?<h6 className='text-danger'>No data exist</h6>:null}
+            <div className='row row-cols-1 row-cols-md-2 row-cols-lg-3'>
+                {reduxData.map((item) => (
+                    <div className='col home-div card p-2' key={item.email}>
+                        <p className='d-flex justify-content-between'>
+                            user id: {item.id}
+                            <span 
+                                onClick={()=>{handleShow(item,setShow,setEditItem)}} className='pointer text-warning fw-bold'
+                            >
+                                Edit
+                            </span>
+                            <span 
+                                onClick={()=>Delete(item.id,{dispatch,DeleteUser,toast})} 
+                                className='pointer text-danger fw-bold'
+                            >
+                                Delete
+                            </span>
+                        </p>
+                        <p>Name: {item.name}</p>
+                        <p>Email: {item.email}</p>
+                        <p>Phone: {item.phone}</p>
                     </div>
-                    <div className='banner-header'>
-                        <div className='banner-middle'>
-                            <div className='bubble-div'>
-                                <img src={bubble} alt='bubble'/>
-                            </div>
-                            <div className='banner-main'>
-                                <div className='banner-slogan'>
-                                    <div className={`${css.d_flex}`}>
-                                        <h1 className='i f_w_900 the light'>THE</h1>
-                                        <figure>
-                                            <img src={headImg} alt="rickie" />
-                                        </figure>
-                                        <h1 className='rick f_w_900'>RICK &</h1>
-                                    </div>
-                                    <div className='d-flex f_w_900'>
-                                        <h1 className='morty f_w_900'>MORTY </h1>
-                                        <h1 className='i ml_15 f_w_700 light'>WIKI</h1>
-                                    </div>
-                                </div>
-                                <div className={`mt_10 ${css.mb5} d-flex a_i_center j_c_center`}>
-                                    <div className='button mr_15 light'>
-                                        <FontAwesomeIcon className='mr_5' icon={faPlay} />
-                                        Watch Now
-                                    </div>
-                                    <p>Brilliant but boozy scientist Rick hijacks his fretful teenage grandson, Morty, for wild.</p>
-                                </div>
-                            </div>
-                            <div className='lightgun-div'>
-                                <img src={lightGun} alt="light gun"/>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div className='card-carousel'>
-                    <div className='caro_top_header'>
-                        <div className='d-flex card_top_arrow'>
-                            <p className='white f_s_18'>Meet The Cast</p>
-                            <FontAwesomeIcon className='icon' icon={faAngleLeft} onClick={() => setNewOrder(data, setData, 0)} />
-                            <FontAwesomeIcon className='icon' icon={faAngleRight} onClick={() => setNewOrder(data, setData, data.length - 1)} />
-                        </div>
-                        <div className='view_btn'>
-                            <button onClick={()=>navigate(path.ch_list)}>View All</button>
-                        </div>
-                    </div>
-                    
-                    {
-                        data.length ? (
-                            <CustomCarousel responsive={{sl:5,l:5.5,t:3,m:2.2}}>
-                                {
-                                    data.map((data, i) => (
-                                    <div key={i} onClick={()=>navigate(path.ch_details+`?id=${data.id}`)}>
-                                        <Card max_width="m_w_150">
-                                            <figure className='p_10 p_b_0'>
-                                                <img className='m_w_100' src={data.image} alt={data.name} />
-                                            </figure>
-                                            <p className='p_0 m_0 p_l_10 white'>
-                                                {data.name}
-                                            </p>
-                                        </Card>
-                                    </div>
-                                    ))
-                                }
-                            </CustomCarousel>
-                        ) : (
-                            <h6 className={`${css.danger} ${css.center}`}>NO Data AVAILABLE</h6>
-                        )
-                    }
-                </div>
-                <div className={`card-carousel ${css.pt5}`}>
-                    <p className='white f_s_18'>Episodes</p>
-                    {
-                        episodes.length ? (
-                            <CustomCarousel responsive={{ sl: 4, l: 4.5, t: 2.1, m: 1.8}}>
-                                {
-                                    episodes.map((data, i) => (
-                                        <Card max_width="m_w_220 episode_card">
-                                            <p className='epi_sl'>
-                                                {data.episode}
-                                            </p>
-                                            <p className='white epi_name'>
-                                                {data.name}
-                                            </p>
-                                        </Card>
-                                    ))
-                                }
-                            </CustomCarousel>
-                        ):(
-                                <h6 className={`${css.danger} ${css.center}`}>NO Data AVAILABLE</h6>
-                        )
-                    }
-                </div>
-                <div className={`card-carousel ${css.pt5}`}>
-                    <p className='white f_s_18'>Locations</p>
-                    {
-                        episodes.length ? (
-                            <CustomCarousel responsive={{ sl: 4, l: 4.5, t: 2.2, m: 1.8 }}>
-                                {
-                                    locations.map((data, i) => (
-                                        <Card max_width="m_w_220 episode_card">
-                                            <p className='epi_sl'>
-                                                #{data.id}
-                                            </p>
-                                            <p className='white epi_name'>
-                                                {data.name}
-                                            </p>
-                                        </Card>
-                                    ))
-                                }
-                            </CustomCarousel>
-                        ):(
-                                <h6 className={`${css.danger} ${css.center}`}>NO Data AVAILABLE</h6>
-                        )
-                    }
-                </div>
-            {/* <p>{t('Dashboard')}</p> */}
+                ))}
             </div>
+            {
+                show && <ModalExample
+                    show={show}
+                    handleClose={()=>handleClose(setShow)}
+                    title={editItem.create?"Create User":"Edit User"}
+                >
+                    <form 
+                        onSubmit={(e) => handleSubmit(e,{ editItem, dispatch, UpdateData, setEditItem, setShow, toast })}
+                    >
+                        <h6>User Name:</h6>
+                        <input 
+                            onChange={(e)=>handleChage(e,{editItem,setEditItem})}
+                            name='name' 
+                            type='text' 
+                            required 
+                            value={editItem.name} 
+                        />
+                        <h6>User Email:</h6>
+                        <input 
+                            onChange={(e)=>handleChage(e,{editItem,setEditItem})}
+                            name='email'
+                            type='email' 
+                            required 
+                            value={editItem.email}
+                        />
+                        <h6>User Phone:</h6>
+                        <input 
+                            onChange={(e)=>handleChage(e,{editItem,setEditItem})}
+                            name='phone'
+                            type='tel' 
+                            required 
+                            value={editItem.phone}
+                        />
+                        <hr/>
+                        <Button variant="secondary" onClick={handleClose}>
+                            Close
+                        </Button>
+                        <Button variant="primary" type='submit'>
+                            Save Changes
+                        </Button>
+                    </form>
+                </ModalExample>
+            }
         </div>
     );
 };

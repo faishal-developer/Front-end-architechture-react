@@ -1,11 +1,11 @@
 import React from 'react';
 
-const Maintanance = () => {
+const Maintanence = () => {
     return (
         <div>
-            the site is in maintenance mood
+            that is in Maintanence mode
         </div>
     );
 };
 
-export default Maintanance;
+export default Maintanence;
