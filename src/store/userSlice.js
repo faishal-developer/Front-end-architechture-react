@@ -9,7 +9,7 @@ export const userSlice = createSlice({
             return {
                 value: action.payload
             };
-        },
+        }, 
         UpdateData: (state,action) => {
             const newState = [...state.value];
             if(action.payload.create){
